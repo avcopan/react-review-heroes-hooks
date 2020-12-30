@@ -1,27 +1,26 @@
-import React, { Component } from 'react';
 import SuperHeroItem from '../SuperHeroItem/SuperHeroItem';
 
-class HeroList extends Component {
-    
-    render() {
-        // put our list of heroes on the DOM
-        // JS
-        let listOfHereos = this.props.heroList.map((hero) => {
-            // return some JSX
-            return (
-                <SuperHeroItem 
-                    hero={hero} 
-                    avengersAssemble={this.props.avengersAssemble} />
-            )
-        });
-        
-        // JSX on the DOM
+function HeroList(props) {
+
+
+    // put our list of heroes on the DOM
+    // JS
+    let listOfHeroes = props.heroList.map((hero) => {
+        // return some JSX
         return (
-            <div>
-                {listOfHereos}
-            </div>
-        );
-    }
+            <SuperHeroItem
+                hero={hero}
+                avengersAssemble={props.avengersAssemble} />
+        )
+    });
+
+    // JSX on the DOM
+    return (
+        <div>
+            {listOfHeroes}
+        </div>
+    );
+
 }
 
 export default HeroList;

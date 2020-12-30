@@ -1,65 +1,62 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class SuperHeroItem extends Component {
+function SuperHeroItem({ hero, avengersAssemble }) {
 
-    state = {
-        unMask: true,
-    };
+    const [isMasked, setIsMasked] = useState(true);
+
 
     // toggles if we show the name or not
-    toggleMask = () => {
+    const toggleMask = () => {
         console.log('clicked a button');
         // set state
-        this.setState({
-            unMask: !this.state.unMask
-        });
+        setIsMasked(!isMasked)
+
     }
 
 
     // determine if we should render the on or off duty message
-    onOrOffDuty = () => {
-        if(this.props.hero.onDuty) {
+    const onOrOffDuty = () => {
+        if (hero.onDuty) {
             // need to return JSX
             return <p>ON DUTY</p>;
         } else {
             // need to return JSX
-            return  <p>SLEEPING</p>;
+            return <p>SLEEPING</p>;
         }
     }
 
-    render() {
-        // JSX on the DOM
+    // JSX on the DOM
 
-        return (
-            <div className="hero">
-                {JSON.stringify(this.props)}
-                <h2>{this.props.hero.superheroName}</h2>
-                <p>Power: {this.props.hero.power}</p>
+    return (
+        <div className="hero">
+            {/* {JSON.stringify(this.props)} */}
+            <h2>{hero.superheroName}</h2>
+            <p>Power: {hero.power}</p>
 
-                {/* conditionally render the hero's real name */}
-                { this.state.unMask && 
-                    <p>Alias: {this.props.hero.alias}</p>
-                }
-                
-                {/* conditionally render Duty status */}
-                { this.onOrOffDuty() }
+            {/* conditionally render the hero's real name */}
+            { !isMasked &&
+                <p>Alias: {hero.alias}</p>
+            }
 
-                <button onClick={this.toggleMask}>Toggle Alias</button>
-                <button onClick={this.props.avengersAssemble}>Assemble!</button>
+            {/* conditionally render Duty status */}
+            { onOrOffDuty()}
 
-                {/* if true, show the thing */}
-                {/* { this.props.hero.onDuty && <p>ON DUTY</p> } */}
+            <button onClick={toggleMask}>Toggle Alias</button>
+            <button onClick={() => avengersAssemble(hero)}>Assemble!</button>
 
-                {/* if/else show one thing or another */}            
-                {/* {
+            {/* if true, show the thing */}
+            {/* { this.props.hero.onDuty && <p>ON DUTY</p> } */}
+
+            {/* if/else show one thing or another */}
+            {/* {
                     this.props.hero.onDuty ? /* if() */
-                        // <p>ON DUTY</p> :         /* true */
-                        // <p>SLEEPING</p>          /* false */
-                    // }*/}
-                }
-            </div>
-        );
-    }
+                // <p>ON DUTY</p> :         /* true */
+                // <p>SLEEPING</p>          /* false */
+                // }*/}
+            }
+        </div>
+    );
+
 }
 
 export default SuperHeroItem;
