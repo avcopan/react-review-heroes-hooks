@@ -1,4 +1,4 @@
-# Polybius Friday React Review with Heroes
+# Friday React Review with Heroes
 
 Client side only.
 
