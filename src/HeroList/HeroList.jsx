@@ -7,7 +7,6 @@ function HeroList(props) {
     // JS
     let listOfHeroes = props.heroList.map((hero) => {
         // return some JSX
-        console.log({hero})
         return (
             <SuperHeroItem
                 key={hero.superheroName}
