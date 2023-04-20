@@ -9,6 +9,7 @@ function HeroList(props) {
         // return some JSX
         return (
             <SuperHeroItem
+                key={hero.superheroName}
                 hero={hero}
                 avengersAssemble={props.avengersAssemble} />
         )
